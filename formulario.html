@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Login | Facilita Emprego</title>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up">
+      <form id="registerForm">
+        <h1>Criar uma conta</h1>
+        <span>ou use seu e-mail para cadastro</span>
+        
+        <!-- Campos comuns: Nome e Email -->
+        <div id="commonFields">
+          <input type="text" placeholder="Nome" id="registerName" required>
+          <input type="email" placeholder="Email" id="registerEmail" required>
+        </div>
+        
+        <!-- Campo de Telefone (apenas para freelancers) -->
+        <div>
+          <input type="tel" class="registerPhone" id="registerPhone" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        
+        <!-- Campo de Senha (para ambos) -->
+        <div class="password-container">
+          <input type="password" placeholder="Senha" id="registerPassword" required>
+          <i class="toggle-password bx bxs-low-vision"></i>
+        </div>
+        
+        <!-- Campos exclusivos para Empresa -->
+        <div id="empresaFields" style="display: none;">
+          <label for="companyCNPJ">
+            <input type="text" id="companyName" name="nome_empresa" placeholder="Nome da Empresa" />
+            <input type="text" id="companyCNPJ" name="cnpj_empresa" placeholder="CNPJ da Empresa" oninput="formatCNPJ(this)" />
+          </label>          
+        </div>
+        
+        <!-- Seleção do tipo de usuário -->
+        <label for="user-type" class="tipodeuser">Tipo de Usuário:</label>
+        <select id="user-type" name="user-type" required>
+          <option value="freelancer">Freelancer</option>
+          <option value="empresa">Empresa</option>
+        </select>
+        <br>
+        <button type="submit" class="btn">Inscrever-se</button>
+      </form>
+    </div>
+
+    <div class="form-container sign-in">
+      <form id="loginForm">
+        <h1>Entrar</h1>
+        <span>ou use sua senha de e-mail</span>
+        <input type="email" placeholder="Email" id="loginEmail" required>
+        <div class="password-container">
+          <input type="password" placeholder="Senha" id="loginPassword" required>
+          <i class="toggle-passwordd bx bxs-low-vision"></i>
+        </div>
+        <a href="forgot_password.php">esqueceu sua senha?</a>
+        <button type="submit" class="btn" id="entrarnaconta">Entrar</button>
+      </form>
+    </div>
+
+    <!-- Painel de saudação (após login) -->
+    <div id="greeting" style="display: none;">
+      <h2 id="greetingMessage"></h2>
+    </div>
+
+    <!-- Toggle de telas (não alterado) -->
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Insira seus dados pessoais para usar todos os recursos do site</p>
+          <button class="hidden" id="login">Entrar</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Bem-vindo ao cadastro</h1>
+          <p>Registre-se com seus dados pessoais para usar todos os recursos do site.</p>
+          <button class="hidden" id="register">Cadastre-se</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scriptst.js"></script>
+  
+  <script>
+    // Função para formatar o CNPJ
+    function formatCNPJ(cnpj) {
+      let cnpjValue = cnpj.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+      if (cnpjValue.length <= 14) {
+        cnpjValue = cnpjValue.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5'); // Formato de CNPJ
+      }
+      cnpj.value = cnpjValue;
+    }
+  </script>
+</body>
+</html>

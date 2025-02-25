@@ -1,0 +1,419 @@
+  @import url('https://fonts.googleapis.com/css2?family=Cookie&family=Honk&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .toggle-container {
+      width: 100%;
+    }
+    .toggle-panel {
+      padding: 10px;
+    }
+    .social-icons a {
+      width: 35px;
+      height: 35px;
+    }
+    .container button {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+
+  body {
+    color: white;
+    background-color: #000000;
+    background: linear-gradient(to right, #000000, #000000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .container {
+    color: white;
+    background-color: #03045E;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgb(0, 26, 255);
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    max-width: 768px;
+    min-height: 480px;
+  }
+
+  .container p {
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+  }
+
+  .container span {
+    color: white;
+    font-size: 12px;
+  }
+
+  .container a {
+    color: #ffffff;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+  }
+
+  .container button {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .container button.hidden {
+    background-color: #03045E;
+    color: rgb(255, 255, 255);
+    border: 1px solid transparent;
+  }
+
+  .container form {
+      background-color: #03045E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 40px 60px 40px; /* 60px de padding-bottom para garantir espaço para o botão */
+      height: 100%;
+      color: #000000;
+      min-height: 480px; /* Garante uma altura mínima */
+    }
+    
+  
+
+  .container input {
+      background-color: #000000;
+      color: rgb(0, 162, 255);
+      border: none;
+      margin: 8px 0;
+      padding: 10px 15px;
+      font-size: 13px;
+      border-radius: 8px;
+      width: 100%;        /* Garante largura total */
+      outline: none;
+    }
+    
+  
+
+  /* Estilos para o container da senha e ícone de toggle */
+  .password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .password-container input {
+    
+    width: 100%;
+    padding-right: 40px;
+  }
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #cec7c7;
+  }
+  .toggle-passwordd {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #cec7c7;
+  }
+
+
+  .form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+  }
+
+  .sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+  }
+
+  .container.active .sign-in {
+    transform: translateX(100%);
+  }
+
+  .sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .container.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+  }
+
+  @keyframes move {
+    0%, 49.99% {
+      opacity: 0;
+      z-index: 1;
+    }
+    50%, 100% {
+      opacity: 1;
+      z-index: 5;
+    }
+  }
+
+  .social-icons {
+    box-shadow: #8c00ff;
+    margin: 20px 0;
+  }
+
+  .social-icons a {
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+    transition: 0.3s ease-in-out;
+    background-color: #000000;
+  }
+
+  .social-icons a:hover {
+    color: rgb(255, 255, 255);
+    transform: scale(1.3) translateY(-5px);
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 0 25px rgb(255, 255, 255);
+    background-color: #03045E;
+  }
+
+  .toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+  }
+
+  .container.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+  }
+
+  .toggle {
+    background-color: rgb(76, 0, 255);
+    height: 100%;
+    background: linear-gradient(to right, #000000, #000000);
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+  }
+
+  .container.active .toggle {
+    transform: translateX(50%);
+  }
+
+  .toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+  }
+
+  .toggle-left {
+    transform: translateX(-200%);
+  }
+
+  .container.active .toggle-left {
+    transform: translateX(0);
+  }
+
+  .toggle-right {
+    right: 0;
+    transform: translateX(0);
+  }
+
+  .container.active .toggle-right {
+    transform: translateX(200%);
+  }
+
+  .btn {
+    display: inline-block;
+    align-items: center;
+    padding: 1rem 2.8rem;
+    white-space: nowrap;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 0 25px #ffffff;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.70s ease-in-out;
+    cursor: pointer;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgb(0, 140, 255);
+    transition: 0.80s ease-in-out;
+    font-size: 0.8rem;
+    color: rgb(255, 255, 255);
+  }
+
+  .hidden {
+    display: inline-block;
+    background: #0704d1;
+    align-items: center;
+    padding: 1rem 2.8rem;
+    white-space: nowrap;
+    box-shadow: 0 0 25px #03045E;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.70s ease-in-out;
+    cursor: pointer;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hidden:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgb(16, 0, 247);
+    transition: 0.80s ease-in-out;
+    background: rgb(255, 255, 255);
+    font-size: 0.8rem;
+  }
+
+  .custom-select {
+    position: relative;
+    width: 200px;
+  }
+
+  .custom-select select {
+    display: none;
+  }
+
+  .custom-select:after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    pointer-events: none;
+  }
+
+  .custom-select {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+  }
+
+  .custom-select :hover {
+    background-color: #e100ff;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  label {
+    text-align: center;
+    justify-content: center;
+  }
+
+  input {
+    text-align: center;
+    justify-content: center;
+  }
+  #user-type {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
+  }
+    #user-type:focus {
+      border: 1px solid #00a2ff; /* Adiciona um destaque azul quando o campo está em foco */
+    }
+    
+    #user-type option {
+      background-color: #0004ff; /* Cor de fundo das opções */
+      color: #fff;
+    }
+    
+    #user-type:hover {
+      background-color: #03045e;
+      cursor: pointer;
+    }
+    
+    .tipodeuser {
+      font-size: 14px;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+
+    
