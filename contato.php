@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    git config --global user.name "SEU NOME NO GITHUB"
+    git config --global user.email "emaildogit@"
 </body>
 </html>
